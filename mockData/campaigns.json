@@ -1,0 +1,42 @@
+{
+    "campaigns":[{
+        "id": 1,
+        "name": "tincidunt nulla",
+        "date": "2022-01-02" 
+      }, {
+        "id": 2,
+        "name": "consequat varius integer",
+        "date": "2022-01-03" 
+      }, {
+        "id": 3,
+        "name": "orci luctus",
+        "date": "2022-01-04" 
+      }, {
+        "id": 4,
+        "name": "auctor",
+        "date": "2022-01-05" 
+      }, {
+        "id": 5,
+        "name": "lobortis",
+        "date": "2022-01-06" 
+      }, {
+        "id": 6,
+        "name": "neque",
+        "date": "2022-01-07" 
+      }, {
+        "id": 7,
+        "name": "dis parturient",
+        "date": "2022-01-29" 
+      }, {
+        "id": 8,
+        "name": "phasellus id sapien",
+        "date": "2022-01-11" 
+      }, {
+        "id": 9,
+        "name": "augue vestibulum ante",
+        "date": "2022-01-12" 
+      }, {
+        "id": 10,
+        "name": "elementum nullam varius",
+        "date": "2022-01-21" 
+      }]}
