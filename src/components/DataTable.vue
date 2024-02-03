@@ -6,7 +6,7 @@
         @change-sort="changeSort" />
     </thead>
     <tbody>
-      <tr class="border  border-primary" v-for=" row  in  processedRows ">
+      <tr class="border  border-primary" v-for=" row  in  processedRows " v-bind:key="row.id">
         <Row :row="row" :multi-select="options.multiSelect" @row-selected="addRowToSelected"
           @row-deselected="removeRowFromSelected" @select-all="selectAll" @deselect-all="deselectAll"
           :id-column="options.idColumn" />
@@ -30,8 +30,8 @@
 <script lang="ts" setup>
 import HeaderRow from './HeaderRow.vue'
 import Row from './Row.vue'
-import { ref, computed } from 'vue'
-import type { DataTableError, DataTableOptionsProps, InputData, SortDirections } from '../DataTableOptions';
+import { ref, computed, type Ref } from 'vue'
+import { DataTableOptions, type DataTableError, type DataTableOptionsProps, type InputData, type SortDirections } from '../types';
 
 const props = defineProps<{ data: object[], options: DataTableOptionsProps }>()
 
