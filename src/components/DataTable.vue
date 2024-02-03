@@ -6,7 +6,7 @@
         @change-sort="changeSort" />
     </thead>
     <tbody>
-      <tr class="border  border-primary" v-for=" row  in  processedRows " v-bind:key="row.id">
+      <tr class="border  border-primary" v-for="row  in  processedRows" v-bind:key="row.id">
         <Row :row="row" :multi-select="options.multiSelect" @row-selected="addRowToSelected"
           @row-deselected="removeRowFromSelected" @select-all="selectAll" @deselect-all="deselectAll"
           :id-column="options.idColumn" />
