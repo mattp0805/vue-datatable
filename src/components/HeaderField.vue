@@ -3,21 +3,21 @@
         <div class="flex">
             {{ title }}
             <div v-if="sortable && sortedBy">
-                <div v-if="sortedDirection == 'asc'">
+                <div :class="iconFlip">
                     <svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none"
                         xmlns="http://www.w3.org/2000/svg" color="#000000">
                         <path d="M6 9L12 15L18 9" stroke="#000000" stroke-width="1.5" stroke-linecap="round"
                             stroke-linejoin="round"></path>
                     </svg>
                 </div>
-                <div v-else>
+                <!-- <div v-else>
                     <svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none"
                         xmlns="http://www.w3.org/2000/svg" color="#000000">
                         <path d="M6 15L12 9L18 15" stroke="#000000" stroke-width="1.5" stroke-linecap="round"
                             stroke-linejoin="round"></path>
                     </svg>
 
-                </div>
+                </div> -->
             </div>
         </div>
     </th>
@@ -36,6 +36,11 @@ const headerClasses = computed(() => {
     return clsx(
         ["justify-start"],
         props.sortedBy && props.selectedClasses)
+})
+
+const iconFlip = computed(() => {
+    return clsx(
+        props.sortedDirection == 'desc' && 'rotate-180')
 })
 
 const changeSort = () => {
