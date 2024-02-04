@@ -1,5 +1,5 @@
 <template>
-  <table v-if="error == null" class="border-separate border-spacing-1 border border-slate-500 ...">
+  <table v-if="error === null" class="border-separate border-spacing-1 border border-slate-500 ...">
     <thead>
       <HeaderRow :multi-select="options.multiSelect" :headers="createHeaders!" :classes="options.headerClasses"
         :sort-options="options.sort" :id-column="options.idColumn" :show-id-column="options.showIdColumn"
@@ -9,14 +9,14 @@
       <tr class="border border-primary" v-for="row in processedRows" v-bind:key="row.id">
         <Row :row="row" :multi-select="options.multiSelect" @row-selected="addRowToSelected"
           @row-deselected="removeRowFromSelected" @select-all="selectAll" @deselect-all="deselectAll"
-          :id-column="options.idColumn" />
+          :id-column="options.idColumn" :show-id-column="options.showIdColumn" />
       </tr>
     </tbody>
   </table>
   <div v-else>
     <p>{{ error }}</p>
   </div>
-  <div>
+  <!-- <div>
     {{ options.sort.direction + ' ' + options.sort.field }}
   </div>
   <div>
@@ -24,7 +24,7 @@
   </div>
   <div>
     {{ options.sort }}
-  </div>
+  </div> -->
 </template>
 
 <script lang="ts" setup>
@@ -46,7 +46,7 @@ const selectedRows: Ref<Array<String>> = ref([])
 const options = ref(new DataTableOptions(props.options))
 
 //Computed
-const error = computed(() => {
+const error = computed((): DataTableError => {
   if (createHeaders.value === null) {
     return `Error creating headers, no id column ${options.value.idColumn} found in data.`
   }
@@ -71,7 +71,7 @@ const createHeaders = computed((): string[] | null => {
 
 const processedRows = computed((): InputData | null => {
   const data = props.data as InputData
-  if (options.value.sort.direction == undefined || options.value.sort.field == undefined) {
+  if (('direction' in options.value.sort && options.value.sort.direction === undefined) || ('field' in options.value.sort && options.value.sort.field === undefined)) {
     return null
   }
   data.sort(compareFunction)

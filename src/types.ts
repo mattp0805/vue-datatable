@@ -13,14 +13,16 @@ export type SortDirections = 'asc' | 'desc'
 
 export type SortOptions = {
   sortable: Boolean
+}
+
+export type SortOptionsSortable  = SortOptions & {
   field: string
   direction: SortDirections
-  selectedClasses: string[]
 }
 
 export interface DataTableOptionsProps {
   multiSelect?: boolean
-  sort?: SortOptions
+  sort?: SortOptions | SortOptionsSortable
   searchable?: boolean
   tableActions?: DataTableAction[]
   rowActions?: DataTableAction[]
@@ -36,7 +38,7 @@ export type DataTableError = string | null
 
 export class DataTableOptions {
   multiSelect: boolean
-  sort: SortOptions
+  sort: SortOptions | SortOptionsSortable
   searchable: boolean
   tableActions: DataTableAction[]
   rowActions: DataTableAction[]
@@ -50,7 +52,7 @@ export class DataTableOptions {
     this.multiSelect = options.multiSelect === undefined ? true : options.multiSelect
     this.sort =
       options.sort === undefined
-        ? { sortable: true, field: 'name', direction: 'asc', selectedClasses: [] }
+        ? { sortable: true, field: 'name', direction: 'asc'}
         : options.sort
     this.searchable = options.searchable === undefined ? true : options.searchable
     this.tableActions = options.tableActions === undefined ? [] : options.tableActions
